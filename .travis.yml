@@ -4,7 +4,7 @@ dotnet: 2.1.4
 solution: PeselValidator.sln
 install:
   - dotnet restore PeselValidator.sln
-  - dotnet install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
+  - dotnet add package NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release PeselValidator.sln
   - dotnet ./testrunner/NUnit.Runners.3.7.0/tools/nunit-console.exe ./PeselValidatorTests/bin/Release/netcoreapp2.0/PeselValidatorTests.dll
