@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <Title>Polish PESEL numbers validator</Title>
+    <PackageId>Rychusoft.Validators.PeselValidator</PackageId>
+    <Authors>Rychusoft</Authors>
+    <Company>Rychusoft</Company>
+    <Description>Easy to use library for validating Polish PESEL numbers:
+
+string pesel = "44051401458";
+bool isValid = Rychusoft.Validators.PeselValidator.IsValid(pesel);</Description>
+    <Copyright>© Pawel Rychlicki 2018</Copyright>
+    <PackageLicenseUrl>https://github.com/Rychu-Pawel/PeselValidator/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Rychu-Pawel/PeselValidator</PackageProjectUrl>
+    <PackageIconUrl>http://pawelrychlicki.pl/favicon.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Rychu-Pawel/PeselValidator</RepositoryUrl>
+    <PackageTags>PESEL validate validator check</PackageTags>
+    <PackageReleaseNotes>-</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

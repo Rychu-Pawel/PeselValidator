@@ -1,0 +1,10 @@
+language: csharp
+mono: none
+dotnet: 2.1.4
+solution: PeselValidator.sln
+install:
+  - nuget restore PeselValidator.sln
+  - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release PeselValidator.sln
+  - dotnet ./testrunner/NUnit.Runners.3.7.0/tools/nunit-console.exe ./PeselValidatorTests/bin/Release/netcoreapp2.0/PeselValidatorTests.dll
