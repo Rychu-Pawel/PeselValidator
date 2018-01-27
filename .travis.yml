@@ -5,4 +5,4 @@ install:
   - dotnet restore PeselValidator.sln
 script:
   - dotnet build -c Release PeselValidator.sln
-  - dotnet test
+  - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj
