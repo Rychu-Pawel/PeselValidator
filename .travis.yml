@@ -7,4 +7,5 @@ install:
   - dotnet add ./PeselValidatorTests/PeselValidatorTests.csproj package --version 3.7.0 --package-directory testrunner NUnit.Runners
 script:
   - dotnet build -c Release PeselValidator.sln
+  - ls -LR
   - dotnet ./testrunner/NUnit.consolerunner/3.7.0/tools/nunit3-console.exe ./PeselValidatorTests/bin/Release/netcoreapp2.0/PeselValidatorTests.dll
