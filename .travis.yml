@@ -7,9 +7,5 @@ install:
 script:
   - dotnet build -c Release PeselValidator.sln
   - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey
-  on: 
-    branch master
+after_success:
+  - test $TRAVIS_BRANCH = "master" && dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey
