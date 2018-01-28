@@ -8,4 +8,4 @@ script:
   - dotnet build -c Release PeselValidator.sln
   - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj
 after_success:
-  - test $TRAVIS_BRANCH = "master" && dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey
+  - test $TRAVIS_BRANCH = "master" && dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey -s https://api.nuget.org/v3/index.json
