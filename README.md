@@ -1,3 +1,6 @@
+# Master branch status
+[![Build Status](https://travis-ci.org/Rychu-Pawel/PeselValidator.svg?branch=master)](https://travis-ci.org/Rychu-Pawel/PeselValidator)
+
 # PeselValidator
 Polish PESEL number validator
 
