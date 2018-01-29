@@ -1,15 +1,12 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Rychusoft.Validators;
+using System;
 
-namespace Tests
+namespace PeselValidatorTests
 {
-    public class Tests
+    [TestFixture]
+    public class PeselValidatorTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         [TestCase("77091712516")]
         [TestCase("00322331154")]
