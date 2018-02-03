@@ -4,7 +4,11 @@ dotnet: 2.1.4
 solution: PeselValidator.sln
 install:
   - dotnet restore PeselValidator.sln
+addons:
+  sonarcloud:
+    organization: "Rychu"
 script:
+  - sonar-scanner
   - dotnet build -c Release PeselValidator.sln
   - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj
 after_success:
