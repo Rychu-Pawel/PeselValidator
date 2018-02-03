@@ -6,7 +6,7 @@ install:
   - dotnet restore PeselValidator.sln
 addons:
   sonarcloud:
-    organization: "Rychu"
+    organization: "rychu-pawel-github"
 script:
   - sonar-scanner
   - dotnet build -c Release PeselValidator.sln
