@@ -9,7 +9,7 @@ namespace Rychusoft.Validators
 
         public static bool IsValid(string pesel)
         {
-            var a = 0;
+            var ab = 0;
 
             if (IsEmptyOrNotProperLength(pesel))
                 return false;
