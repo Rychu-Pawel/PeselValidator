@@ -10,7 +10,7 @@ install:
   - dotnet restore ./PeselValidator.sln
 script:
   - ls -LR
-  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /n:PeselValidator /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
+  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
   - dotnet build -c Release ./PeselValidator.sln
   - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj --logger:trx
   - ls -LR
