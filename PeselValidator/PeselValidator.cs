@@ -9,8 +9,6 @@ namespace Rychusoft.Validators
 
         public static bool IsValid(string pesel)
         {
-            var ab = 0;
-
             if (IsEmptyOrNotProperLength(pesel))
                 return false;
 
@@ -55,9 +53,7 @@ namespace Rychusoft.Validators
             int sum = 0;
 
             for (int i = 0; i < 10; i++)
-            {
                 sum += weights[i] * int.Parse(pesel[i].ToString());
-            }
 
             return sum % 10;
         }
