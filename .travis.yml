@@ -3,24 +3,14 @@ dotnet: 2.1.4
 solution: PeselValidator.sln
 before_install:
   - wget -O  ./sonar-scanner-msbuild.zip https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.0.2.892/sonar-scanner-msbuild-4.0.2.892.zip
-  - mkdir ./tools
-  - mkdir ./tools/sonar-scanner-msbuild
   - unzip -qq ./sonar-scanner-msbuild.zip -d ./tools/sonar-scanner-msbuild
   - chmod +x ./tools/sonar-scanner-msbuild/sonar-scanner-3.0.3.778/bin/sonar-scanner
-  - wget -O ./JetBrains.dotCover.CommandLineTools.zip https://download-cf.jetbrains.com/resharper/JetBrains.dotCover.CommandLineTools.2017.3.2.zip
-  - mkdir ./tools/JetBrains.dotCover.CommandLineTools
-  - unzip -qq ./JetBrains.dotCover.CommandLineTools.zip -d ./tools/JetBrains.dotCover.CommandLineTools
 install:
   - dotnet restore ./PeselValidator.sln
-  - mkdir ./tools/NUnit.ConsoleRunner
-  - dotnet add ./PeselValidatorTests/PeselValidatorTests.csproj package --version 3.8.0 --package-directory ./tools/NUnit.ConsoleRunner NUnit.ConsoleRunner
 script:
-  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="./PeselValidatorTests/TestResults/*.trx" /d:sonar.cs.dotcover.reportsPaths="./Reports/TestCoverageReport.html"
+  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
   - dotnet build -c Release ./PeselValidator.sln
   - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj --logger:trx
-  - mono ./tools/NUnit.ConsoleRunner/nunit.consolerunner/3.8.0/tools/nunit3-console.exe ./PeselValidatorTests/bin/Release/netcoreapp2.0/PeselValidatorTests.dll
-  - mkdir ./Reports
-  - mono ./tools/JetBrains.dotCover.CommandLineTools/dotCover.exe /TargetExecutable="./tools/NUnit.ConsoleRunner/nunit.consolerunner/3.8.0/tools/nunit3-console.exe" /TargetArguments="./PeselValidatorTests/bin/Release/netcoreapp2.0/PeselValidatorTests.dll" /Output="./Reports/TestCoverageReport.html" /ReportType="HTML"
   - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe end /d:sonar.login=${SONAR_TOKEN}
 after_success:
   - test $TRAVIS_BRANCH = "master" && dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey -s https://api.nuget.org/v3/index.json
