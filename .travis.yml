@@ -5,6 +5,7 @@ before_install:
   - wget -O  ./sonar-scanner-msbuild.zip https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.0.2.892/sonar-scanner-msbuild-4.0.2.892.zip
   - ls -LR
   - unzip -qq ./sonar-scanner-msbuild.zip -d ./tools/sonar-scanner-msbuild
+  - chmod +x ./tools/sonar-scanner-msbuild/sonar-scanner-3.0.3.778/bin/sonar-scanner
 install:
   - dotnet restore ./PeselValidator.sln
 script:
