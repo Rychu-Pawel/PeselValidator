@@ -28,6 +28,8 @@ namespace Rychusoft.Validators
 
         private static bool HasValidDay(string pesel)
         {
+            var b = 0;
+
             var day = int.Parse(pesel.Substring(4, 2));
 
             return 1 <= day && day <= 31;

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $TRAVIS_PULL_REQUEST = "true" ]; then
-	mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.branch.name=${TRAVIS_PULL_REQUEST_BRANCH} /d:sonar.branch.target=${TRAVIS_BRANCH}
+	mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.branch.name=${TRAVIS_PULL_REQUEST_BRANCH} /d:sonar.branch.target=${TRAVIS_BRANCH} /d:sonar.github.oauth=${GitHubPullRequestToken} /d:sonar.github.repository=${TRAVIS_REPO_SLUG} /d:sonar.github.pullRequest=${TRAVIS_PULL_REQUEST}
 elif [ $TRAVIS_BRANCH = "develop" ]; then
   mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.branch.name=${TRAVIS_PULL_REQUEST_BRANCH} /d:sonar.branch.target="master"
 elif [ $TRAVIS_BRANCH = "master" ]; then
