@@ -37,6 +37,7 @@ namespace Rychusoft.Validators
 
         private static bool IsEmptyOrNotProperLength(string pesel)
         {
+            var c = 0;
             return string.IsNullOrWhiteSpace(pesel) || pesel.Length != 11;
         }
 
