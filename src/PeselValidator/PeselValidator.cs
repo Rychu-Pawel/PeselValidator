@@ -9,8 +9,6 @@ namespace Rychusoft.Validators
 
         public static bool IsValid(string pesel)
         {
-            var a = 0;
-
             if (IsEmptyOrNotProperLength(pesel))
                 return false;
 
@@ -28,8 +26,6 @@ namespace Rychusoft.Validators
 
         private static bool HasValidDay(string pesel)
         {
-            var b = 0;
-
             var day = int.Parse(pesel.Substring(4, 2));
 
             return 1 <= day && day <= 31;
@@ -37,7 +33,6 @@ namespace Rychusoft.Validators
 
         private static bool IsEmptyOrNotProperLength(string pesel)
         {
-            var c = 0;
             return string.IsNullOrWhiteSpace(pesel) || pesel.Length != 11;
         }
 
