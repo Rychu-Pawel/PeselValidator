@@ -11,6 +11,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6479EA8B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeselValidatorTests", "tests\PeselValidatorTests\PeselValidatorTests.csproj", "{B86ADEF7-C18F-4C8E-AECE-B69E002931D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{3BCCE66A-79B9-4069-AC01-B44027DA0383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "travis", "travis", "{E195257D-8193-4C4D-875A-E4D33EA3D583}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\travis\after_success_nuget_push.sh = scripts\travis\after_success_nuget_push.sh
+		scripts\travis\before_install_sonar_scanner.sh = scripts\travis\before_install_sonar_scanner.sh
+		scripts\travis\build_script.sh = scripts\travis\build_script.sh
+		scripts\travis\install.sh = scripts\travis\install.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8906BFDF-0205-426E-ADEE-9994B9FEEEBC} = {FD5F6744-4DEF-48B7-AAEA-8EED75D88164}
 		{B86ADEF7-C18F-4C8E-AECE-B69E002931D1} = {6479EA8B-DD91-4F96-AD92-C236D8EEABD4}
+		{E195257D-8193-4C4D-875A-E4D33EA3D583} = {3BCCE66A-79B9-4069-AC01-B44027DA0383}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25D21EBA-CBA2-4AE1-935D-78558AC47E23}
