@@ -2,17 +2,12 @@ language: csharp
 dotnet: 2.1.4
 solution: PeselValidator.sln
 before_install:
-  - wget -O  ./sonar-scanner-msbuild.zip https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.0.2.892/sonar-scanner-msbuild-4.0.2.892.zip
   - mkdir ./tools
-  - mkdir ./tools/sonar-scanner-msbuild
-  - unzip -qq ./sonar-scanner-msbuild.zip -d ./tools/sonar-scanner-msbuild
-  - chmod +x ./tools/sonar-scanner-msbuild/sonar-scanner-3.0.3.778/bin/sonar-scanner
+  - mkdir ./tools/downloads
+  - bash ./scripts/travis/before_install_sonar_scanner.sh
 install:
-  - dotnet restore ./PeselValidator.sln
+  - bash ./scripts/travis/install.sh
 script:
-  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
-  - dotnet build -c Release ./PeselValidator.sln
-  - dotnet test ./PeselValidatorTests/PeselValidatorTests.csproj --logger:trx
-  - mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe end /d:sonar.login=${SONAR_TOKEN}
+  - bash ./scripts/travis/build_script.sh
 after_success:
-  - test $TRAVIS_BRANCH = "master" && dotnet nuget push ./PeselValidator/bin/Release/Rychusoft.Validators.PeselValidator.*.nupkg -k $NugetApiKey -s https://api.nuget.org/v3/index.json
+  - bash ./scripts/travis/after_success_nuget_push.sh
