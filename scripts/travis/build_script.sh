@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ -v TRAVIS_PULL_REQUEST_BRANCH ]]; then
+if [[ $TRAVIS_PULL_REQUEST != "false" ]]; then
   echo "STARTING SONAR IN PULL REQUEST MODE"
   mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe begin /d:sonar.organization="rychu-pawel-github" /k:PeselValidator /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.analysis.mode=preview /d:sonar.github.oauth="${GitHubPullRequestToken}" /d:sonar.github.repository="${TRAVIS_REPO_SLUG}" /d:sonar.github.pullRequest=${TRAVIS_PULL_REQUEST}
 elif [[ $TRAVIS_BRANCH = "develop" ]]; then
@@ -14,7 +14,7 @@ fi
 dotnet build -c Release ./PeselValidator.sln
 dotnet test ./tests/PeselValidatorTests/PeselValidatorTests.csproj --logger:trx
 
-if [[ -v TRAVIS_PULL_REQUEST_BRANCH  || $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH = "master" ]]; then
+if [[ $TRAVIS_PULL_REQUEST != "false"  || $TRAVIS_BRANCH = "develop" || $TRAVIS_BRANCH = "master" ]]; then
   echo "STOPPING SONAR"
   mono ./tools/sonar-scanner-msbuild/SonarQube.Scanner.MSBuild.exe end /d:sonar.login=${SONAR_TOKEN}
   echo "SONAR STOPPED"
