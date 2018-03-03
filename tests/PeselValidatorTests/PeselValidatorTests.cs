@@ -1,96 +1,95 @@
-﻿using NUnit.Framework;
-using Rychusoft.Validators;
+﻿using Rychusoft.Validators;
 using System;
+using Xunit;
 
 namespace PeselValidatorTests
 {
-    [TestFixture]
     public class PeselValidatorTests
     {
-        [Test]
-        [TestCase("77091712516")]
-        [TestCase("00322331154")]
-        [TestCase("55061623457")]
-        [TestCase("47090849759")]
-        [TestCase("65102875514")]
-        [TestCase("61111218221")]
-        [TestCase("82071567835")]
-        [TestCase("95011135953")]
-        [TestCase("76080395716")]
-        [TestCase("86073041155")]
-        [TestCase("00010176876")]
-        [TestCase("00210127847")]
-        [TestCase("00410182631")]
-        [TestCase("59031881124")]
-        [TestCase("43020886142")]
-        [TestCase("94021689685")]
-        [TestCase("13323111795")]
+        [Theory]
+        [InlineData("77091712516")]
+        [InlineData("00322331154")]
+        [InlineData("55061623457")]
+        [InlineData("47090849759")]
+        [InlineData("65102875514")]
+        [InlineData("61111218221")]
+        [InlineData("82071567835")]
+        [InlineData("95011135953")]
+        [InlineData("76080395716")]
+        [InlineData("86073041155")]
+        [InlineData("00010176876")]
+        [InlineData("00210127847")]
+        [InlineData("00410182631")]
+        [InlineData("59031881124")]
+        [InlineData("43020886142")]
+        [InlineData("94021689685")]
+        [InlineData("13323111795")]
         public void IsValid_ValidPeselsTest(string pesel)
         {
-            Assert.IsTrue(PeselValidator.IsValid(pesel));
+            Assert.True(PeselValidator.IsValid(pesel));
         }
 
-        [Test]
-        [TestCase("7709171251")]
-        [TestCase("003223311")]
-        [TestCase("55061623")]
-        [TestCase("4709084")]
-        [TestCase("651028")]
-        [TestCase("61111")]
-        [TestCase("8207")]
-        [TestCase("950")]
-        [TestCase("76")]
-        [TestCase("8")]
+        [Theory]
+        [InlineData("7709171251")]
+        [InlineData("003223311")]
+        [InlineData("55061623")]
+        [InlineData("4709084")]
+        [InlineData("651028")]
+        [InlineData("61111")]
+        [InlineData("8207")]
+        [InlineData("950")]
+        [InlineData("76")]
+        [InlineData("8")]
         public void IsValid_TooShortPeselsTest(string pesel)
         {
-            Assert.IsFalse(PeselValidator.IsValid(pesel));
+            Assert.False(PeselValidator.IsValid(pesel));
         }
 
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
         public void IsValid_EmptyPeselsTest(string pesel)
         {
-            Assert.IsFalse(PeselValidator.IsValid(pesel));
+            Assert.False(PeselValidator.IsValid(pesel));
         }
 
-        [Test]
-        [TestCase("770917125161")]
-        [TestCase("0032233115412")]
-        [TestCase("55061623457333")]
-        [TestCase("470908497593456")]
-        [TestCase("65102875514456456")]
-        [TestCase("6111121822146786787")]
+        [Theory]
+        [InlineData("770917125161")]
+        [InlineData("0032233115412")]
+        [InlineData("55061623457333")]
+        [InlineData("470908497593456")]
+        [InlineData("65102875514456456")]
+        [InlineData("6111121822146786787")]
         public void IsValid_TooLongPeselsTest(string pesel)
         {
-            Assert.IsFalse(PeselValidator.IsValid(pesel));
+            Assert.False(PeselValidator.IsValid(pesel));
         }
 
-        [Test]
-        [TestCase("17097712516")]
-        [TestCase("23320031154")]
-        [TestCase("16065523457")]
+        [Theory]
+        [InlineData("17097712516")]
+        [InlineData("23320031154")]
+        [InlineData("16065523457")]
         public void IsValid_WrongDatesValidPeselsTest(string pesel)
         {
-            Assert.IsFalse(PeselValidator.IsValid(pesel));
+            Assert.False(PeselValidator.IsValid(pesel));
         }
 
-        [Test]
-        [TestCase("           ")]
-        [TestCase("          0")]
-        [TestCase("0          ")]
-        [TestCase("      0    ")]
-        [TestCase(";ierhf;iadr")]
-        [TestCase("00000000000")]
-        [TestCase("11111111111")]
-        [TestCase("10101010101")]
-        [TestCase("01010101010")]
-        [TestCase("aaaaaaaaaaa")]
-        [TestCase(";lizsedujrh")]
-        [TestCase("99999999999")]
+        [Theory]
+        [InlineData("           ")]
+        [InlineData("          0")]
+        [InlineData("0          ")]
+        [InlineData("      0    ")]
+        [InlineData(";ierhf;iadr")]
+        [InlineData("00000000000")]
+        [InlineData("11111111111")]
+        [InlineData("10101010101")]
+        [InlineData("01010101010")]
+        [InlineData("aaaaaaaaaaa")]
+        [InlineData(";lizsedujrh")]
+        [InlineData("99999999999")]
         public void IsValid_MonkeyInvalidPeselsTest(string pesel)
         {
-            Assert.IsFalse(PeselValidator.IsValid(pesel));
+            Assert.False(PeselValidator.IsValid(pesel));
         }
     }
 }
