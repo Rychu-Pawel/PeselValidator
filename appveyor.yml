@@ -5,7 +5,7 @@ environment:
   SONAR_APIKEY:
     secure: EYzruYp2xqMzztgVQEnax0Wnfqc46jrg2JlF/tYOQPzCktQ9h6D/d0MqqyAhyUvJ
   GITHUB_APIKEY:
-    secure: EIoNH8PMnm6gqY1DAvAyq/Opxxg6xflr6WIAstJJQmHDkZO6lGT8GpO4rv3+iThQ
+    secure: kkXdLKyTiS4ZTO5tQ9DlrXw/PnElNtvnkl0jm0QLIqm6oE6x+8EA8A+UKw4+h44+
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
