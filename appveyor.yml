@@ -3,7 +3,7 @@ image: Visual Studio 2017
 configuration: Release
 environment:
   SONAR_APIKEY:
-    secure: EYzruYp2xqMzztgVQEnax0Wnfqc46jrg2JlF/tYOQPzCktQ9h6D/d0MqqyAhyUvJ
+    secure: DUCuBgLmhR6jEJEm0n480wMqRFLsCLfhucK9zqPzbxmWg6Dxl9IS3rehXprs8jTn
   GITHUB_APIKEY:
     secure: kkXdLKyTiS4ZTO5tQ9DlrXw/PnElNtvnkl0jm0QLIqm6oE6x+8EA8A+UKw4+h44+
 dotnet_csproj:
