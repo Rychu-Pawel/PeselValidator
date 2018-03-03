@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FD5F6744-4DEF-48B7-AAEA-8EED75D88164}"
 EndProject
@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{3BCC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "travis", "travis", "{E195257D-8193-4C4D-875A-E4D33EA3D583}"
 	ProjectSection(SolutionItems) = preProject
-		scripts\travis\after_success_nuget_push.sh = scripts\travis\after_success_nuget_push.sh
-		scripts\travis\before_install_sonar_scanner.sh = scripts\travis\before_install_sonar_scanner.sh
 		scripts\travis\build_script.sh = scripts\travis\build_script.sh
 		scripts\travis\install.sh = scripts\travis\install.sh
 	EndProjectSection

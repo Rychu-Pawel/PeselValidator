@@ -1,13 +1,7 @@
 language: csharp
 dotnet: 2.1.4
 solution: PeselValidator.sln
-before_install:
-  - mkdir ./tools
-  - mkdir ./tools/downloads
-  - bash ./scripts/travis/before_install_sonar_scanner.sh
 install:
   - bash ./scripts/travis/install.sh
 script:
   - bash ./scripts/travis/build_script.sh
-after_success:
-  - bash ./scripts/travis/after_success_nuget_push.sh
