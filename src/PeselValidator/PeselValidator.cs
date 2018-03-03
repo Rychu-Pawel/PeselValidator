@@ -9,6 +9,8 @@ namespace Rychusoft.Validators
 
         public static bool IsValid(string pesel)
         {
+            var sonarTrap = true;
+
             if (IsEmptyOrNotProperLength(pesel))
                 return false;
 
