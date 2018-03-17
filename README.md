@@ -10,6 +10,8 @@ Nuget | [![Nuget](https://img.shields.io/nuget/v/rychusoft.validators.peselvalid
 Polish PESEL number validator
 
 # Easy to use library for validating Polish PESEL numbers:
-string pesel = "44051401458"; <br />
+```csharp
+string pesel = "44051401458";
 bool isValid = Rychusoft.Validators.PeselValidator.IsValid(pesel);
+```
 
