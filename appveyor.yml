@@ -16,7 +16,7 @@ dotnet_csproj:
   informational_version: $(appveyor_build_version)
 init:
 - ps: choco install msbuild-sonarqube-runner -y
-- ps: choco install opencover -y
+- ps: choco install opencover.portable -y
 install:
 - ps: New-Item .\reports -ItemType directory 
 - ps: dotnet add .\tests\PeselValidatorTests\PeselValidatorTests.csproj package xunit.runner.utility 
