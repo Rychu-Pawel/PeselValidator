@@ -25,7 +25,7 @@ before_build:
 - ps: >- 
     if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
         Write-Host "Starting sonar scan in PR Mode"
-        SonarQube.Scanner.MSBuild.exe begin /o:"rychu-pawel-github" /k:"PeselValidator" /d:sonar.login="$env:SONAR_APIKEY" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.branch.base="develop" /d:sonar.cs.opencover.reportsPaths=".\Reports\OpenCover.xml" /d:sonar.github.oauth="$env:GITHUB_APIKEY" /d:sonar.github.repository="$env:APPVEYOR_REPO_NAME" /d:sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER 
+        SonarQube.Scanner.MSBuild.exe begin /o:"rychu-pawel-github" /k:"PeselValidator" /d:sonar.login="$env:SONAR_APIKEY" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.cs.opencover.reportsPaths=".\Reports\OpenCover.xml" /d:sonar.pullrequest.key="$env:APPVEYOR_PULL_REQUEST_NUMBER"
     }
     elseif ("$env:APPVEYOR_REPO_BRANCH" -eq "develop") {
         Write-Host "Starting sonar scan in DEVELOP Mode"
