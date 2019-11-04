@@ -49,7 +49,7 @@ test_script:
 - ps: dotnet build .\PeselValidator.sln /p:DebugType=Full
 - ps: OpenCover.Console.exe -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test .\tests\PeselValidatorTests\PeselValidatorTests.csproj --logger:trx --no-build" -filter:"+[PeselValidator*]*" -oldStyle -register:user -output:".\Reports\OpenCover.xml"
 after_test:
-- ps: SonarQube.Scanner.MSBuild.exe end /d:sonar.login="$env:SONAR_APIKEY""
+- ps: SonarQube.Scanner.MSBuild.exe end /d:sonar.login="$env:SONAR_APIKEY"
 artifacts:
 - path: .\src\PeselValidator\bin\Release\Rychusoft.Validators.PeselValidator.*.nupkg
   name: PeselValidator_nuget_package
