@@ -21,11 +21,6 @@ namespace Rychusoft.Validators
             if (!HasValidDay(pesel))
                 return false;
 
-            var sonarTrap = false;
-
-            if (sonarTrap)
-                sonarTrap = true;
-
             return true;
         }
 
