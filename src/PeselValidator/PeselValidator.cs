@@ -50,7 +50,10 @@ namespace Rychusoft.Validators
 
         private static int CalculateChecksum(string pesel)
         {
-            var sum = weights.Select((x, i) => x * int.Parse(pesel[i].ToString())).Sum();
+            int sum = 0;
+
+            for (int i = 0; i < 10; i++)
+                sum += weights[i] * int.Parse(pesel[i].ToString());
 
             return sum % 10;
         }
