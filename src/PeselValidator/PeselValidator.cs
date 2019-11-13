@@ -45,12 +45,12 @@ namespace Rychusoft.Validators
         {
             int checksum = CalculateChecksum(pesel);
 
-            return pesel[10].ToString() == checksum.ToString();
+            return pesel.Last().ToString() == checksum.ToString();
         }
 
         private static int CalculateChecksum(string pesel)
         {
-            var sum = weights.Select((x, i) => x * (int) char.GetNumericValue(pesel[i])).Sum();
+            var sum = weights.Select((x, i) => x * int.Parse(pesel[i].ToString())).Sum();
 
             return sum % 10;
         }
