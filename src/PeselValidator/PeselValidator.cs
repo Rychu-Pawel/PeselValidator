@@ -45,7 +45,7 @@ namespace Rychusoft.Validators
         {
             int checksum = CalculateChecksum(pesel);
 
-            return pesel[10].ToString() == checksum.ToString();
+            return pesel.Last().ToString() == checksum.ToString();
         }
 
         private static int CalculateChecksum(string pesel)
