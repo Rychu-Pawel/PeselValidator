@@ -5,7 +5,7 @@ environment:
   SONAR_APIKEY:
     secure: EYzruYp2xqMzztgVQEnax0Wnfqc46jrg2JlF/tYOQPzCktQ9h6D/d0MqqyAhyUvJ
   GITHUB_APIKEY:
-    secure: kkXdLKyTiS4ZTO5tQ9DlrXw/PnElNtvnkl0jm0QLIqm6oE6x+8EA8A+UKw4+h44+
+    secure: mNS8sa53WlYK5HtcTYXYpPXqwt+xndOxvFBu22ynD7wEKeOrq+P70L4FOkPCL7wY
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -61,7 +61,7 @@ artifacts:
 deploy:
 - provider: NuGet
   api_key:
-    secure: wlguq6vd+AXndRnwIjSCnWN3mQfdJIp4JlCRFNONxwlv6QES0Km/o7eNIcvsSc6+
+    secure: PD9Xp/1NegkIddToIeNjDPK9kcW61NTCbbBkz3/7qzu+TeitoPDuB6yuLRh21I1g
   artifact: PeselValidator_nuget_package
   on:
     branch: master
